@@ -1,4 +1,5 @@
 import os
+import datetime
 from dotenv import load_dotenv
 from langdetect import detect, DetectorFactory
 from groq import Groq
@@ -17,16 +18,19 @@ def get_response(question):
     # Detect the language of the question
     lang = detect(question)
 
+    # Get today's date dynamically
+    current_date = datetime.datetime.now().strftime("%B %d, %Y")  # Example: "February 19, 2025"
+
     # URLs for reference
     urls = """
-    **Relevant Saudi Financial Sources:**
+    **Relevant Saudi Financial Sources (Updated for 2025):**
     - [Saudi Exchange](https://www.saudiexchange.sa/wps/portal/saudiexchange?locale=en)
     - [Tadawul Group](https://www.tadawulgroup.sa/wps/portal/tadawulgroup)
     - [Edaa (Securities Depository Center)](https://www.tadawulgroup.sa/wps/portal/tadawulgroup/portfolio/edaa)
     """
 
-    # Set the prompt template with URLs included
-    template_en = f"""You are a specialized financial data assistant, designed to provide **accurate**, **precise**, and **up-to-date** information from trusted Saudi sources.
+    # Set the prompt template with real-time data reference
+    template_en = f"""You are a specialized financial data assistant, designed to provide **accurate**, **precise**, and **up-to-date** financial insights from trusted Saudi sources. Your answers should always reflect the latest available market data as of **{current_date}**.
 
     If the question pertains to topics outside of Saudi financial data, respond with: "I'm trained to provide information exclusively on Saudi financial matters."
 
@@ -36,17 +40,17 @@ def get_response(question):
     - **Trading volume**
     - **Regulatory updates**
 
-    Reference the following sources for your response:
+    Use the most recent data from the following sources:
     {urls}
 
-    Start with "Pleased to provide the information you’re looking for!" and provide a confident response.
+    Start with "Pleased to provide the information you’re looking for!" and ensure your response reflects **current market conditions**.
 
     Question: {question}
 
     Answer:
     """
 
-    template_ar = f"""أنت مساعد بيانات مالية متخصص، مصمم لتقديم **معلومات دقيقة**، **حديثة** من **مصادر سعودية موثوقة**.
+    template_ar = f"""أنت مساعد بيانات مالية متخصص، مصمم لتقديم **معلومات دقيقة**، **حديثة** من **مصادر سعودية موثوقة**. يجب أن تعكس إجاباتك أحدث البيانات المالية المتاحة وفقًا للتاريخ **{current_date}**.
 
     إذا كان السؤال يتعلق بمواضيع خارج البيانات المالية السعودية، أجب بعبارة: "أنا مدرب على تقديم المعلومات المتعلقة بالمسائل المالية السعودية فقط."
 
@@ -56,10 +60,10 @@ def get_response(question):
     - **حجم التداول**
     - **التحديثات التنظيمية**
 
-    يمكنك الرجوع إلى المصادر التالية:
+    استخدم أحدث البيانات من المصادر التالية:
     {urls}
 
-    ابدأ بعبارة "يسعدني مساعدتك!" وقدم إجابة واثقة.
+    ابدأ بعبارة "يسعدني مساعدتك!" وتأكد من أن إجابتك تعكس **أحدث ظروف السوق**.
 
     السؤال: {question}
 
