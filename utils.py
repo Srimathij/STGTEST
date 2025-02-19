@@ -29,6 +29,16 @@ def get_response(question):
     - [Edaa (Securities Depository Center)](https://www.tadawulgroup.sa/wps/portal/tadawulgroup/portfolio/edaa)
     """
 
+    # Define common greetings
+    greetings_en = ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"]
+    greetings_ar = ["مرحبا", "أهلاً", "السلام عليكم", "مساء الخير", "صباح الخير"]
+
+    # Check if the user input is a greeting
+    if question.lower() in greetings_en:
+        return "Hello! 😊 How can I assist you with Saudi financial data today?"
+    elif question.lower() in greetings_ar:
+        return "مرحباً! 😊 كيف يمكنني مساعدتك في البيانات المالية السعودية اليوم؟"
+
     # Set the prompt template with real-time data reference
     template_en = f"""You are a specialized financial data assistant, designed to provide **accurate**, **precise**, and **up-to-date** financial insights from trusted Saudi sources. Your answers should always reflect the latest available market data as of **{current_date}**.
 
