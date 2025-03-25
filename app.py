@@ -6,14 +6,14 @@ from utils import get_response
 # Initialize session state for Streamlit
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Hello and welcome! 🎉 You're in the right place to explore the Saudi market. Just ask your question and let’s dive into the details!"}
+        {"role": "assistant", "content": "Hello and welcome! 🎉 You're in the right place to explore the Stock market. Just ask your question and let’s dive into the details!"}
     ]
 
 # Chat input field at the top
-user_input = st.chat_input("𝐀𝐬𝐤 𝐚𝐧𝐲𝐭𝐡𝐢𝐧𝐠 𝐚𝐛𝐨𝐮𝐭 𝐬𝐚𝐮𝐝𝐢 𝐭𝐚𝐝𝐚𝐰𝐮𝐥 𝐦𝐚𝐫𝐤𝐞𝐭....!💹")
+user_input = st.chat_input("𝐀𝐬𝐤 𝐚𝐧𝐲𝐭𝐡𝐢𝐧𝐠 𝐚𝐛𝐨𝐮𝐭 𝐬𝐭𝐨𝐜𝐤 𝐦𝐚𝐫𝐤𝐞𝐭....!💹")
 
 # Streamlit title
-st.header("𝖳𝖠𝖣𝖠𝖶𝖴𝖫 𝖠𝖲𝖲𝖨𝖲𝖳𝖠𝖭𝖳🔎")
+st.header("𝐀𝐈 𝐓𝐫𝐚𝐝𝐞𝐀𝐬𝐬𝐢𝐬𝐭🔎")
 
 # Process user input
 if user_input:
