@@ -1,3 +1,4 @@
+
 import os
 import datetime
 from dotenv import load_dotenv
@@ -8,8 +9,9 @@ from groq import Groq
 DetectorFactory.seed = 0
 
 # Load environment variables
-load_dotenv()
-groq_api_key = os.getenv("GROQ_API_KEY")
+# Hardcoded Groq API Key (⚠️ Use only in development or secured environments)
+groq_api_key = "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"
+
 
 # Initialize the Groq client
 client = Groq(api_key=groq_api_key)
